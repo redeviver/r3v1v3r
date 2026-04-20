@@ -1,4 +1,3 @@
-# ⚡ VpsPack Cyber Edition
 # R3V1V3R VPSPACK
 # ⚡ VpsPack Cyber Edition v2
 
