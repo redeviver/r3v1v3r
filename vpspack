@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Cores estilo cyberpunk
 GREEN="\033[1;32m"
 CYAN="\033[1;36m"
@@ -11,16 +10,23 @@ function banner() {
     clear
     echo -e "${MAGENTA}"
     echo "╔══════════════════════════════╗"
-    echo "║      VPSPACK CYBER EDITION   ║"
+    echo "║   VPSPACK CYBER EDITION V2   ║"
     echo "╚══════════════════════════════╝"
     echo -e "${RESET}"
+}
+
+LOG="/var/log/vpspack.log"
+
+function log() {
+    echo "$(date) - $1" >> $LOG
 }
 
 function menu() {
     echo -e "${CYAN}[1] Gerenciar Usuários${RESET}"
     echo -e "${CYAN}[2] VPN${RESET}"
     echo -e "${CYAN}[3] Tunelamento SSH${RESET}"
-    echo -e "${CYAN}[4] Monitoramento${RESET}"
+    echo -e "${CYAN}[4] Firewall${RESET}"
+    echo -e "${CYAN}[5] Monitoramento${RESET}"
     echo -e "${RED}[0] Sair${RESET}"
 }
 
@@ -33,7 +39,8 @@ while true; do
         1) bash modules/users.sh ;;
         2) bash modules/vpn.sh ;;
         3) bash modules/ssh_tunnel.sh ;;
-        4) speedtest ;;
+        4) bash modules/firewall.sh ;;
+        5) bash modules/monitor.sh ;;
         0) exit ;;
         *) echo "Opção inválida"; sleep 1 ;;
     esac
