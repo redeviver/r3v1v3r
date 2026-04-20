@@ -1,17 +1,17 @@
 #!/bin/bash
 
 if [ "$(id -u)" != "0" ]; then
-   echo "Execute como root"
-   exit 1
+    echo "Use root"
+    exit 1
 fi
 
-apt update -y || yum update -y
-
-apt install -y git curl || yum install -y git curl
+apt update -y
+apt install -y git curl whiptail qrencode wireguard ufw htop
 
 cp vpspack /usr/bin/
 chmod +x /usr/bin/vpspack
 
 mkdir -p /etc/vpspack
+touch /var/log/vpspack.log
 
-echo "Instalado! Use: vpspack"
+echo "Instalado com sucesso! Use: VPSpack v2"
